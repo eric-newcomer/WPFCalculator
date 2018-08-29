@@ -29,5 +29,62 @@ namespace Calculator
             Button b = (Button) sender;
             CalcInput.Text += b.Content.ToString();
         }
+        private void Result_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                result();
+            }
+            catch (Exception exc)
+            {
+                CalcInput.Text = "Error!";
+            }
+        }
+        private void result()
+        {
+            String op;
+            int iOp = 0;
+            if (CalcInput.Text.Contains("+"))
+            {
+                iOp = CalcInput.Text.IndexOf("+");
+            }
+            else if (CalcInput.Text.Contains("-"))
+            {
+                iOp = CalcInput.Text.IndexOf("-");
+            }
+            else if (CalcInput.Text.Contains("*"))
+            {
+                iOp = CalcInput.Text.IndexOf("*");
+            }
+            else if (CalcInput.Text.Contains("/"))
+            {
+                iOp = CalcInput.Text.IndexOf("/");
+            }
+            else
+            {
+                //error!
+            }
+
+            op = CalcInput.Text.Substring(iOp, 1);
+            double op1 = Convert.ToDouble(CalcInput.Text.Substring(0, iOp));
+            double op2 = Convert.ToDouble(CalcInput.Text.Substring(iOp + 1, CalcInput.Text.Length - iOp - 1));
+
+            if (op == "+")
+            {
+                CalcInput.Text += " = " + (op1 + op2);
+            }
+            else if (op == "-")
+            {
+                CalcInput.Text += " = " + (op1 - op2);
+            }
+            else if (op == "*")
+            {
+                CalcInput.Text += " = " + (op1 * op2);
+            }
+            else 
+            {
+                CalcInput.Text += " = " + (op1 / op2);
+            }
+        }
     }
 }
