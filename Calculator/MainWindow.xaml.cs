@@ -90,5 +90,16 @@ namespace Calculator
                 CalcInput.Text += " = " + (op1 / op2);
             }
         }
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            if (CalcInput.Text.Length > 0)
+            {
+                CalcInput.Text = CalcInput.Text.Substring(0, CalcInput.Text.Length - 1);
+            }
+        }
+        private void ClearAll_Click(object sender, RoutedEventArgs e)
+        {
+            CalcInput.Text = "";
+        }
     }
 }
