@@ -26,6 +26,10 @@ namespace Calculator
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            if (CalcInput.Text.Contains("="))
+            {
+                CalcInput.Text = "";
+            }
             Button b = (Button) sender;
             CalcInput.Text += b.Content.ToString();
         }
